@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Namespace padrão do MAUI -->
+<!-- Namespace para XAML -->
+<!-- Define a classe C# associada a esta página -->
+<!-- Título da página que aparece na barra de navegação -->
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="MauiAppMinhasCompras.Views.NovoProduto"    
+    Title="Novo Produto">
+        <!-- Define o título da página -->
+
+    <!-- Define os itens da barra de ferramentas da página -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" />
+        <!-- Item da toolbar para salvar, com evento Clicked associado -->
+    </ContentPage.ToolbarItems>
+
+    <!-- Define o conteúdo da página -->
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Layout empilhado para organizar os elementos verticalmente -->
+            <Label Text="Descrição:" />
+            <!-- Rótulo para o campo de descrição -->
+            <Entry x:Name="txt_descricao" />
+            <!-- Campo de entrada para a descrição do produto -->
+
+            <Label Text="Quantidade:" />
+            <!-- Rótulo para o campo de quantidade -->
+            <Entry x:Name="txt_quantidade" />
+            <!-- Campo de entrada para a quantidade do produto -->
+
+            <Label Text="Preço:" />
+            <!-- Rótulo para o campo de preço -->
+            <Entry x:Name="txt_preco" />
+            <!-- Campo de entrada para o preço do produto -->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

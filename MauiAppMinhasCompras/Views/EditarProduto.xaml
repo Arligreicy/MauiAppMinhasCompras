@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Namespace padrão do MAUI -->
+<!-- Namespace para XAML -->
+<!-- Define a classe C# associada a esta página -->
+<!-- Título da página que aparece na barra de navegação -->
+    <ContentPage 
+        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+  
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
+        x:Class="MauiAppMinhasCompras.Views.EditarProduto"
+    
+        Title="Editar Produto">
+
+
+        <ContentPage.ToolbarItems> <!-- Itens da barra de ferramentas da página -->
+            <ToolbarItem Text="Salvar" Clicked="ToolbarItem_Clicked" /> <!-- Botão "Salvar" que chama o método quando clicado -->
+        </ContentPage.ToolbarItems>
+
+        <ContentPage.Content> <!-- Conteúdo principal da página -->
+            <StackLayout> <!-- Layout empilhado para organizar os elementos verticalmente -->
+
+                <Label Text="Id: " /> <!-- Rótulo para exibir o ID do produto -->
+                <Label Text="{Binding Id}" /> <!-- Rótulo que exibe o ID do produto, vinculado à propriedade Id do ViewModel -->
+
+                <Label Text="Descrição:" /> <!-- Rótulo para o campo de descrição -->
+                <Entry x:Name="txt_descricao" Text="{Binding Descricao}" /> <!-- Campo de entrada para a descrição, vinculado à propriedade Descricao -->
+
+                <Label Text="Quantidade:" /><!-- Rótulo para o campo de quantidade -->
+                <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" /><!-- Campo de entrada para a quantidade, vinculado à propriedade Quantidade e permite apenas entrada numérica -->
+
+                <Label Text="Preço:" /><!-- Rótulo para o campo de preço -->
+                <Entry x:Name="txt_preco" Text="{Binding Preco}" Keyboard="Numeric" /><!-- Campo de entrada para o preço, vinculado à propriedade Preco e permite apenas entrada numérica -->
+            </StackLayout>        <!-- Fim do StackLayout -->
+        </ContentPage.Content>   <!-- Fim do conteúdo da página -->
+
+    </ContentPage> <!-- fim da ContentPage -->

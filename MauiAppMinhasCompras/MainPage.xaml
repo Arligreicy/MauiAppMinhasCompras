@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?><!-- Namespace padrão do MAUI --><!-- Namespace para XAML --><!-- Define a classe C# associada a esta página -->  <!-- Título da página que aparece na barra de navegação -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
+    x:Class="MauiAppMinhasCompras.MainPage"
+    
+    Title="Minhas Compras">
+  
+
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <!-- Define um estilo para todos os rótulos (Labels) nesta página -->
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <!-- Alinha verticalmente o texto no centro -->
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <!-- Faz o rótulo preencher e expandir verticalmente -->
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_Somar" />
+        <!-- Item de menu para somar produtos, com evento Clicked associado -->
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked_Add" />
+        <!-- Item de menu para adicionar um novo produto, com evento Clicked associado -->
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Layout empilhado que organiza seus filhos verticalmente -->
+            <!-- Texto de exemplo que aparece quando o campo está vazio -->
+            <!-- Campo de busca para produtos -->
+
+            <SearchBar x:Name="txt_search" Margin="10" 
+                Placeholder="Busca de Produtos"
+                
+                TextChanged="txt_search_TextChanged" />
+                <!-- Evento acionado quando o texto no campo de busca é alterado -->
+
+                <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
+                    <!-- Lista que exibe os produtos, com evento ItemSelected para seleção de itens -->
+                    <ListView.Header>
+                        <!-- Cabeçalho da lista -->
+                        <Grid ColumnDefinitions="3*, *, *, *">
+                            <!-- Define as colunas do cabeçalho -->
+                            <Label Grid.Column="0" Text="Produto" FontAttributes="Bold" />
+                            <!-- Rótulo para a coluna "Produto" em negrito -->
+                            <Label Grid.Column="1" Text="Qnt" FontAttributes="Bold" />
+                            <!-- Rótulo para a coluna "Quantidade" em negrito -->
+                            <Label Grid.Column="2" Text="Preço" FontAttributes="Bold" />
+                            <!-- Rótulo para a coluna "Preço" em negrito -->
+                            <Label Grid.Column="3" Text="Total" FontAttributes="Bold" />
+                            <!-- Rótulo para a coluna "Total" em negrito -->
+                        </Grid>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <!-- Define o modelo para os itens da lista -->
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Define como cada item da lista será apresentado -->
+                                <ViewCell.ContextActions>
+                                    <!-- Ações que aparecem ao pressionar e segurar um item da lista -->
+                                    <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                                    <!-- Ação para remover um produto, com evento Clicked associado -->
+                            </ViewCell.ContextActions>
+                            <!-- Define as linhas do Grid para o item da lista -->
+                            <Grid RowDefinitions="Auto" 
+                                ColumnDefinitions="3*, *, *, *">
+                                
+                                <!-- Define as colunas do Grid para o item da lista -->
+                                    <Label Grid.Column="0" Text="{Binding Descricao}" />
+                                    <!-- Rótulo que exibe a descrição do produto, vinculado à propriedade Descricao -->
+                                    <Label Grid.Column="1" Text="{Binding Quantidade}" />
+                                    <!-- Rótulo que exibe a quantidade do produto, vinculado à propriedade Quantidade -->
+                                    <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:c}'}" />
+                                    <!-- Rótulo que exibe o preço do produto, vinculado à propriedade Preco e formatado como moeda -->
+                                    <Label Grid.Column="3" Text="{Binding Total, StringFormat='{}{0:c}'}" />
+                                    <!-- Rótulo que exibe o total do produto (Preço * Quantidade), vinculado à propriedade Total e formatado como moeda -->
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
